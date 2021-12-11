@@ -4,5 +4,10 @@ import { Document, Types } from 'mongoose';
 export interface IUser extends Document {
     email: string
     password: string
-    documents: Types.Array<number>
+    documents: Types.Array<string>
+}
+
+export interface IDoctype extends Document {
+    type: string
+    fields: Array<String>
 }
