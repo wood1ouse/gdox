@@ -8,4 +8,4 @@ const userSchema: Schema = new Schema({
     documents: {type: [String]}
 })
 
-export const User: Model<IUser> = model('User', userSchema)
+export const UserModel: Model<IUser> = model('User', userSchema)

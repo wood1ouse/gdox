@@ -1,15 +1,27 @@
-import express, {Request, Response} from 'express'
+import express from "express";
+import { connect } from 'mongoose';
 
-import rootRouter from './routes/rootRouter'
-import userRouter from './routes/userRouter'
+import rootRouter from "./routes/rootRouter";
+import userRouter from "./routes/userRouter";
 
+const app = express();
+const PORT = 3000;
 
-const app = express()
-const PORT = 3000
+app.use(express.json());
 
-app.use('/', rootRouter)
-app.use('/user', userRouter)
+app.use("/", rootRouter);
+app.use("/user", userRouter);
 
-app.listen(PORT, () => {
-    console.log(`server is on on ${PORT} port`);
-})
+function startServer() {
+	try {
+		app.listen(PORT, async () => {
+			await connect('mongodb://localhost:27017/gdox')
+
+		});
+	} catch (e) {
+        console.log(e);
+        
+    }
+}
+
+startServer()

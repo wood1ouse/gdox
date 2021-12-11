@@ -7,8 +7,8 @@ rootRouter.get('/', (_: Request, res: Response) => {
     res.status(200).json("Mock from root")
 })
 
-rootRouter.get('/login', AuthController.login)
+rootRouter.post('/login', AuthController.login)
 
-rootRouter.get('/register', AuthController.register)
+rootRouter.post('/register', AuthController.register)
 
 export default rootRouter
