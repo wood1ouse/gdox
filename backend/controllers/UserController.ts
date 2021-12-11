@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import {connect} from 'mongoose'
 
 export default class UserController {
     static getDocument = (req: Request, res: Response) => {
