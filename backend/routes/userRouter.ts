@@ -5,6 +5,6 @@ const userRouter = Router()
 
 userRouter.get('/:id/document/:docId', UserController.getDocument)
 
-userRouter.get('/:id/documents', UserController.getDocuments)
+userRouter.get('/:id', UserController.getUser)
 
 export default userRouter

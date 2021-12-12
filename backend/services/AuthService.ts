@@ -6,6 +6,7 @@ import { IUser } from "../public/types";
 
 export default class AuthService {
 	static login = async (user: IUser): Promise<IUser | undefined> => {
+
 		const hasher = new Hasher();
 
 		const dbUser = await UserModel.findOne({ email: user.email }).orFail(
@@ -18,8 +19,13 @@ export default class AuthService {
 	};
 
 	static register = async (user: IUser): Promise<IUser | undefined> => {
+
+		if (await UserModel.findOne({email: user.email})) {
+			throw new Error("There's already user with that email")
+		}
+
 		const createdUser = await UserModel.create(user);
 
-		return createdUser;
+		return createdUser
 	};
 }

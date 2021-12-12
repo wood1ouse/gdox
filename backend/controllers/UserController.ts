@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import UserService from '../services/UserService';
 
 export default class UserController {
 	static createDocument = (req: Request, res: Response) => {
@@ -11,9 +12,11 @@ export default class UserController {
 		res.status(200).json(`Mock document ${docId} of user ${id}`);
 	};
 
-	static getDocuments = (req: Request, res: Response) => {
+	static getUser = async (req: Request, res: Response) => {
 		const { id } = req.params;
 
-		res.status(200).json(`Mock from documents list of user ${id}`);
+		const user = await UserService.getUser(id)
+
+		res.status(200).json(user);
 	};
 }

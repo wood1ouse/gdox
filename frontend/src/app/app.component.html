@@ -1,1 +1,4 @@
+<ng-container *ngIf="userService.isAuthorized()">
+  <app-header></app-header>
+</ng-container>
 <router-outlet>

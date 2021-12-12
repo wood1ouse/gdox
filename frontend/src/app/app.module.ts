@@ -8,12 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { RegisterModule } from './register/register.module';
+import { HeaderComponent } from './ui/header/header.component';
+import { UserComponent } from './user/user.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    UserComponent,
   ],
   imports: [
     RegisterModule,
