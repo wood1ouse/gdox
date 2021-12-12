@@ -1,44 +1,165 @@
-<div class="w-screen h-screen flex justify-center items-center">
+<div class="h-screen flex justify-center items-center bg-gradient-to-r from-cyan-500 to-blue-500">
   <div class="w-96">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" [formGroup]="registerForm">
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           First Name
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" type="text" placeholder="First Name" formControlName="firstName">
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="firstName" type="text" placeholder="First Name" formControlName="firstName">
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Last Name
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" type="text" placeholder="Last Name" formControlName="lastName">
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="lastName" type="text" placeholder="Last Name" formControlName="lastName">
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Email
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" formControlName="email">
+        <input
+          class="transition-all shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="email" type="text" placeholder="Email" formControlName="email">
+        <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.dirty"
+          class="mt-4 text-red-500 text-xs italic">Please enter a valid email.</p>
+
       </div>
-      <div class="mb-6">
+      <div class="mb">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" formControlName="password">
+        <input
+          class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="password" type="password" placeholder="******************" formControlName="password">
+      </div>
+
+      <div *ngIf="passwordState === 'weak' && registerForm.get('password')?.dirty " class="relative pt-1">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span
+              class="
+                text-xs
+                font-semibold
+                inline-block
+                py-1
+                px-2
+                uppercase
+                rounded-full
+                text-white
+                bg-red-500
+              "
+            >
+              Weak Password
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+          <div
+            style="width: 0%"
+            class="
+              shadow-none
+              flex flex-col
+              text-center
+              whitespace-nowrap
+              text-white
+              justify-center
+              bg-red-500
+            "
+          ></div>
+        </div>
+      </div>
+
+      <div *ngIf="passwordState === 'medium'" class="relative pt-1">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span
+              class="
+                text-xs
+                font-semibold
+                inline-block
+                py-1
+                px-2
+                uppercase
+                rounded-full
+                text-white
+                bg-yellow-500
+              "
+            >
+              Medium Password
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-yellow-200">
+          <div
+            style="width: 50%"
+            class="
+              shadow-none
+              flex flex-col
+              text-center
+              whitespace-nowrap
+              text-white
+              justify-center
+              bg-yellow-500
+            "
+          ></div>
+        </div>
+      </div>
+
+      <div *ngIf="passwordState === 'strong'" class="relative pt-1">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span
+              class="
+                text-xs
+                font-semibold
+                inline-block
+                py-1
+                px-2
+                uppercase
+                rounded-full
+                text-white
+                bg-green-500
+              "
+            >
+              Strong Password
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200">
+          <div
+            style="width: 100%"
+            class="
+              shadow-none
+              flex flex-col
+              text-center
+              whitespace-nowrap
+              text-white
+              justify-center
+              bg-green-500
+            "
+          ></div>
+        </div>
       </div>
 
       <div class="flex items-center justify-between">
-        <button (click)="onSubmit()" class="transition duration-75 bg-blue-500 ease-in-out hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <button (click)="onSubmit()"
+          class="transition duration-75 bg-blue-500 ease-in-out hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button">
           Register
         </button>
-        <a class="ml-4 transition delay-0 duration- inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        <a class="ml-4 transition delay-0 duration- inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+          routerLink="/login">
           Already have an account?
         </a>
       </div>
     </form>
-    <p class="text-center text-gray-500 text-xs">
+    <p class="text-center text-white text-xs">
       &copy;2021 woodlouse
     </p>
   </div>
 
 </div>
-

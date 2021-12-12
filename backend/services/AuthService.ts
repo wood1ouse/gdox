@@ -9,12 +9,12 @@ export default class AuthService {
 		const hasher = new Hasher();
 
 		const dbUser = await UserModel.findOne({ email: user.email }).orFail(
-			new Error("Access Denied (Client Error)"),
+			new Error("Please, check your email/password"),
 		);
 
 		if (await hasher.compare(user.password, dbUser!.password)) {
 			return dbUser;
-		} else throw new Error("Access Denied (Client Error)")
+		} else throw new Error("Please, check your email/password)")
 	};
 
 	static register = async (user: IUser): Promise<IUser | undefined> => {

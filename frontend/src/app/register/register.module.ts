@@ -1,14 +1,14 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../auth.service';
 import { RegisterComponent } from './register.component';
 
 @NgModule({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   exports: [RegisterComponent],
   declarations: [RegisterComponent],
-  providers: [HttpClientModule],
+  providers: [],
 })
 
 export class RegisterModule {

@@ -1,30 +1,44 @@
+import { MEDIUMPASSWORD, STRONGPASSWORD } from './../public/regex';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  passwordState: string = 'weak';
+
   registerForm: FormGroup = new FormGroup({
-    "firstName": new FormControl(),
-    "lastName": new FormControl(),
-    "email": new FormControl(),
-    "password": new FormControl(),
-  })
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    this.registerForm.get('password')?.valueChanges.subscribe((p) => {
 
-  ngOnInit(): void {
+      if (p.match(STRONGPASSWORD)) {
 
+        this.passwordState = 'strong';
+
+      } else if (p.match(MEDIUMPASSWORD)) {
+
+        this.passwordState = 'medium';
+
+      } else this.passwordState = 'weak';
+    });
   }
+
+  ngOnInit(): void {}
 
   onSubmit(): void {
-    this.authService.register(this.registerForm.value).subscribe()
-
+    if (this.registerForm.valid && this.passwordState === 'medium' || this.passwordState === 'strong') {
+      this.authService.register(this.registerForm.value).subscribe()
+    }
   }
-
 }
