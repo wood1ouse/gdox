@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { RegisterModule } from './register/register.module';
 import { HeaderComponent } from './ui/header/header.component';
 import { UserComponent } from './user/user.component';
+import { DocumentListComponent } from './user/document-list/document-list.component';
 
 
 
@@ -18,6 +19,7 @@ import { UserComponent } from './user/user.component';
     AppComponent,
     HeaderComponent,
     UserComponent,
+    DocumentListComponent,
   ],
   imports: [
     RegisterModule,

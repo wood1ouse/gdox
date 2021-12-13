@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -14,13 +15,12 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((p) => {
-      this.authService.getUser(p.get('id')).subscribe((user) => {
-        this.currentUser = user
-      });
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
     });
   }
 }

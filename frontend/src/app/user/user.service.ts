@@ -19,4 +19,8 @@ export class UserService {
   getCurrentUser(): Observable<any> {
     return this.authService.getUser(localStorage.getItem('currentUser'))
   }
+
+  logout(): void{
+    localStorage.removeItem('currentUser')
+  }
 }

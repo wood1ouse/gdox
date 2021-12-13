@@ -21,15 +21,13 @@ export class UserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (route.paramMap.get('id') === this.userService.isAuthorized()) {
-      return true;
-    } else if (this.userService.isAuthorized()) {
-      console.log("yay");
-
+    if (!this.userService.isAuthorized()) {
+      this.router.navigate(['/login']);
+      return false;
+    } else if (route.paramMap.get('id') !== this.userService.isAuthorized()) {
       this.router.navigate([`/user/${this.userService.isAuthorized()}`]);
     }
-    this.router.navigate(['/login'])
-    return false
 
+    return true;
   }
 }
