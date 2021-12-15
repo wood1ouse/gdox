@@ -75,7 +75,7 @@ export class PassportComponent implements OnInit {
 
 
     formData.append('userId', this.userService.isAuthorized())
-    formData.append('type', 'passport');
+    formData.append('type', 'Passport');
 
     for (let field of Object.keys(this.passportForm.value)) {
       formData.append(field, this.passportForm.get(field)?.value);

@@ -1,5 +1,4 @@
 import { PassportModule } from './doctype/passport/passport.module';
-import { PassportComponent } from './doctype/passport/passport.component';
 import { LoginModule } from './login/login.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,10 +16,7 @@ import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.compon
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
 import { CriminalrecordComponent } from './doctype/criminalrecord/criminalrecord.component';
 import { DrivinglicenseComponent } from './doctype/drivinglicense/drivinglicense.component';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PassportPreviewComponent } from './doctype-preview/passport-preview/passport-preview.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +28,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     DoctypeSwitcherComponent,
     CriminalrecordComponent,
     DrivinglicenseComponent,
+    PassportPreviewComponent,
   ],
   imports: [
     RegisterModule,
@@ -40,8 +37,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
-    PassportModule
-
+    PassportModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

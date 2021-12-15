@@ -16,4 +16,6 @@ rootRouter.get('/documentlist', DocsController.getDoctypes)
 
 rootRouter.post('/documentlist/create', DocsController.createDocument)
 
+rootRouter.post('/document', DocsController.getDocument)
+
 export default rootRouter

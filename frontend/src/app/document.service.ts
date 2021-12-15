@@ -10,8 +10,10 @@ export class DocumentService {
   constructor(private http: HttpClient) { }
 
   createDocument(document: any): Observable<any> {
-
-
     return this.http.post('http://localhost:4200/documentlist/create', document)
+  }
+
+  getDocument(userDoc: any) {
+    return this.http.post('http://localhost:4200/document', userDoc)
   }
 }

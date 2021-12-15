@@ -1,3 +1,4 @@
+import { PassportPreviewComponent } from './doctype-preview/passport-preview/passport-preview.component';
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
 import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.component';
 import { LoginGuard } from './login/login.guard';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'user/:id', component: UserComponent, canActivate: [UserGuard]},
+  {path: 'preview/Passport/:id', component: PassportPreviewComponent}
   // {path: "**", component: UserComponent}
 
 ];

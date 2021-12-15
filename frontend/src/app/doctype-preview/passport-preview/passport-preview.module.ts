@@ -1,4 +1,3 @@
-import { PassportModule } from './../passport/passport.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,10 +5,10 @@ import { CommonModule } from '@angular/common';
 
 
 @NgModule({
+  declarations: [],
   imports: [
     CommonModule,
-    // RouterModule,
-    PassportModule
+    RouterModule
   ]
 })
-export class DoctypeSwitcherModule { }
+export class PassportPreviewModule { }

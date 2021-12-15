@@ -36,6 +36,15 @@
           class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="password" type="password" placeholder="******************" formControlName="password">
       </div>
+      <div class="mb">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Confirm Password
+        </label>
+        <input
+          class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="password" type="password" placeholder="******************" formControlName="confirmPassword">
+
+      </div>
 
       <div *ngIf="passwordState === 'weak' && registerForm.get('password')?.dirty " class="relative pt-1">
         <div class="flex mb-2 items-center justify-between">
@@ -130,8 +139,10 @@
         </div>
       </div>
 
-      <p *ngIf="filledError" class="mb-2 text-red-500 text-s">All fiedlds must be filled</p>
-      <p *ngIf="backendErrors" class="mb-2 text-red-500 text-s">{{backendErrors}}</p>
+      <p *ngIf="!passwordMatch && registerForm.get('confirmPassword')?.dirty" class="mb-3 text-red-500 text-l font-bold">
+        Password did not match</p>
+      <p *ngIf="filledError" class="mb-3 text-red-500 text-l font-bold">All fiedlds must be filled</p>
+      <p *ngIf="backendErrors" class="mb-3 text-red-500 text-l font-bold">{{backendErrors}}</p>
 
 
       <div class="flex items-center justify-between">

@@ -14,12 +14,14 @@ export class RegisterComponent implements OnInit {
   filledError: boolean = false;
   backendErrors: string = '';
   passwordState: string = 'weak';
+  passwordMatch: boolean = false;
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required]),
   });
 
   constructor(private authService: AuthService, private router: Router) {
@@ -30,6 +32,15 @@ export class RegisterComponent implements OnInit {
         this.passwordState = 'medium';
       } else this.passwordState = 'weak';
     });
+    this.registerForm
+      .get('confirmPassword')
+      ?.valueChanges.subscribe((confirmPassword) => {
+        this.passwordMatch =
+          confirmPassword === this.registerForm.get('password')?.value ? true : false;
+
+      console.log(this.passwordMatch);
+
+      });
   }
 
   ngOnInit(): void {}

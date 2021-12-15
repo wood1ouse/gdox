@@ -1,7 +1,11 @@
 <div class="flex justify-between items-center h-15 w-full bg-blue-500">
-  <div class="ml-3 text-white font-bold">Good day, {{currentUser?.firstName}} {{currentUser?.lastName}}</div>
-  <button (click)="logout()" class="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-10 rounded-md">
+  <div class="ml-3 text-white font-bold">Good day,
+    <a routerLink="/user/{{currentUser}}">
+      {{currentUser?.firstName}} {{currentUser?.lastName}}
+    </a>
+  </div>
+  <button (click)="logout()"
+    class="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4  rounded-md">
     Exit
   </button>
 </div>
-

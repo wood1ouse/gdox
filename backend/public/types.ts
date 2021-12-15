@@ -6,7 +6,7 @@ export interface IUser extends Document {
     lastName: string
     email: string
     password: string
-    documents: Types.Array<string>
+    documents: Types.Array<any>
 }
 
 export interface IDoctype extends Document {

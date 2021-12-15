@@ -1,0 +1,4 @@
+<div clas="flex justify-center items-center" *ngIf="currentDocument">
+  {{currentDocument | json}}
+  <img src="http://localhost:4200/{{currentDocument.photoName}}">
+</div>
