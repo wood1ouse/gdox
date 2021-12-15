@@ -14,7 +14,6 @@ export class DocumentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getUser(this.userSerice.isAuthorized()).subscribe(user => {
-      console.log(user.documents);
 
       this.documents = user.documents
     })

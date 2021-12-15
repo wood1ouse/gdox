@@ -12,7 +12,7 @@ export class UserService {
     localStorage.setItem('currentUser', user._id);
   }
 
-  isAuthorized() {
+  isAuthorized(): any {
     return localStorage.getItem('currentUser')
   }
 
