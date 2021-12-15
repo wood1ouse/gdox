@@ -1,0 +1,14 @@
+<div class="text-center my-2 text-m font-bold">Select type of Document: </div>
+<div class="flex justify-center">
+  <div class="grid grid-cols-3 gap-5">
+    <a *ngFor="let doctype of doctypes" routerLink="/documentlist/{{doctype.type}}"
+      class="bg-gradient-to-r from-orange-400 to-orange-500  text-white cursor-pointer flex-col transition-all items-center justify-center py-5 px-10 shadow-lg hover:shadow-xl rounded-lg">
+      <div class="text-center font-bold mb-2">{{doctype.type}}</div>
+      <ul *ngFor="let field of doctype.fields" class="text-center">
+        <li class="text-black">{{field}}</li>
+      </ul>
+    </a>
+
+
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 import {HttpClient, HttpErrorResponse} from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class AuthService {
     .pipe(catchError(this.handleError))
   }
 
-  getUser(id: string | null) {
+  getUser(id: string | null): Observable<any> {
     return this.http.get(`http://localhost:4200/user/${id}`)
   }
 

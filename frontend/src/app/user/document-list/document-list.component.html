@@ -1,1 +1,22 @@
-<p>document-list works!</p>
+<div *ngIf="documents.length; else noDocuments" class="grid grid-cols-3 gap-5">
+  <a *ngFor="let document of documents"
+    class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer flex transition-all h-50 w-50 items-center justify-center py-5 px-10 shadow-lg hover:shadow-xl  rounded-lg">
+    {{document}}
+  </a>
+
+  <a routerLink="/documentlist"
+    class="font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg my-20">
+    Create new
+  </a>
+
+</div>
+
+<ng-template #noDocuments class="grid grid-cols-3 gap-5">
+  <a routerLink="/documentlist"
+    class="font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg my-20">
+    Create new
+  </a>
+</ng-template>
+
+
+

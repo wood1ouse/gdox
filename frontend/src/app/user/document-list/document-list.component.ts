@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-document-list',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent implements OnInit {
+  documents: Array<any> = []
 
-  constructor() { }
+  constructor(private authService: AuthService, private userSerice: UserService) { }
 
   ngOnInit(): void {
+    this.authService.getUser(this.userSerice.isAuthorized()).subscribe(user => {
+      console.log(user.documents);
+
+      this.documents = user.documents
+    })
+
+
   }
 
 }
