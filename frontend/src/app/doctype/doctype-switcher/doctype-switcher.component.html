@@ -1,5 +1,3 @@
-<!-- <p>this is {{doctype}}</p> -->
-
 <div [ngSwitch]="doctype" class="flex justify-center">
   <app-passport *ngSwitchCase="Doctypes.Passport"></app-passport>
   <app-criminalrecord *ngSwitchCase="Doctypes.CertificateOfNoCriminalRecord"></app-criminalrecord>

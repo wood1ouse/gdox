@@ -16,7 +16,7 @@ import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.compon
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
 import { CriminalrecordComponent } from './doctype/criminalrecord/criminalrecord.component';
 import { DrivinglicenseComponent } from './doctype/drivinglicense/drivinglicense.component';
-import { PassportPreviewComponent } from './doctype-preview/passport-preview/passport-preview.component';
+import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { PassportPreviewComponent } from './doctype-preview/passport-preview/pas
     DoctypeSwitcherComponent,
     CriminalrecordComponent,
     DrivinglicenseComponent,
-    PassportPreviewComponent,
+    DoctypePreviewComponent,
   ],
   imports: [
     RegisterModule,

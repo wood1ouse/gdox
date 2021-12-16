@@ -23,6 +23,8 @@ export default class DocsService {
 				},
 			},
 		).catch((error) => console.log(error));
+
+		return documentId
 	};
 
 	static getDocument = async (userDoc: any) => {

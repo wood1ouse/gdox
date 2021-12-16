@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PassportPreviewComponent } from './passport-preview.component';
+import { DoctypePreviewComponent } from './doctype-preview.component';
 
-describe('PassportPreviewComponent', () => {
-  let component: PassportPreviewComponent;
-  let fixture: ComponentFixture<PassportPreviewComponent>;
+describe('DoctypePreviewComponent', () => {
+  let component: DoctypePreviewComponent;
+  let fixture: ComponentFixture<DoctypePreviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PassportPreviewComponent ]
+      declarations: [ DoctypePreviewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PassportPreviewComponent);
+    fixture = TestBed.createComponent(DoctypePreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

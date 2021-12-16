@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TAXCODE } from 'src/app/public/regex';
 import { DocumentService } from 'src/app/document.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-passport',
@@ -23,7 +24,8 @@ export class PassportComponent implements OnInit {
   constructor(
     private userService: UserService,
     private validator: DoctypeValidatorService,
-    private documentService: DocumentService
+    private documentService: DocumentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -73,20 +75,25 @@ export class PassportComponent implements OnInit {
 
     const formData = new FormData();
 
-
-    formData.append('userId', this.userService.isAuthorized())
+    formData.append('userId', this.userService.isAuthorized());
     formData.append('type', 'Passport');
 
     for (let field of Object.keys(this.passportForm.value)) {
-      formData.append(field, this.passportForm.get(field)?.value);
+      if (field === 'bornDate') {
+        formData.append(
+          field,
+          this.passportForm.get(field)?.value.toLocaleDateString()
+        );
+      } else {
+        formData.append(field, this.passportForm.get(field)?.value);
+      }
     }
 
     if (this.passportForm.valid) {
-      this.documentService
-        .createDocument(formData)
-        .subscribe((data) => {
-          console.log(data);
-        });
+      this.documentService.createDocument(formData).subscribe((doc) => {
+        this.router.navigate([`/preview/${doc}`]);
+
+      });
     }
   }
 }

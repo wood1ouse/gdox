@@ -11,4 +11,4 @@ import { CommonModule } from '@angular/common';
     RouterModule
   ]
 })
-export class PassportPreviewModule { }
+export class DoctypePreviewModule { }

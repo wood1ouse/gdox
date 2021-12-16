@@ -14,7 +14,6 @@ export default class DocsController {
 	}
 
     static getDocument = async (req: Request, res: Response) => {
-        console.log(req.body)
         try {
             const document = await DocsService.getDocument(req.body)
 
@@ -28,7 +27,12 @@ export default class DocsController {
 
         const photoName = FileService.saveFile(req.files?.photo)
 
-        await DocsService.createDocument({...req.body, photoName})
+        const docId = await DocsService.createDocument({...req.body, photoName})
 
+        res.status(200).json(docId)
+    }
+
+    static deleteDocument = async (req: Request, res: Response) => {
+        
     }
 }

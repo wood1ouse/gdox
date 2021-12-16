@@ -18,4 +18,6 @@ rootRouter.post('/documentlist/create', DocsController.createDocument)
 
 rootRouter.post('/document', DocsController.getDocument)
 
+rootRouter.delete('/document', DocsController.deleteDocument)
+
 export default rootRouter

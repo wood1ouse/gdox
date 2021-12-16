@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -15,5 +15,9 @@ export class DocumentService {
 
   getDocument(userDoc: any) {
     return this.http.post('http://localhost:4200/document', userDoc)
+  }
+
+  deleteDocument(userDoc: any) {
+    return this.http.delete('http://localhost:4200/document', userDoc)
   }
 }
