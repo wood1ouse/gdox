@@ -1,3 +1,4 @@
+import { Doctypes } from 'src/app/public/doctypes';
 import { DoctypeValidatorService } from './../doctype-validator.service';
 import { IUser } from './../../../../../backend/public/types';
 import { UserService } from './../../user/user.service';
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class PassportComponent implements OnInit {
   currentUser!: IUser;
-  passportForm!: any;
+  passportForm!: FormGroup;
   frontendErrors: { filled: string; taxCode: string; bornDate: string } = {
     filled: '',
     taxCode: '',
@@ -52,7 +53,7 @@ export class PassportComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.passportForm.get('photo').setValue(event.target.files[0]);
+        this.passportForm.get('photo')?.setValue(event.target.files[0]);
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -76,7 +77,7 @@ export class PassportComponent implements OnInit {
     const formData = new FormData();
 
     formData.append('userId', this.userService.isAuthorized());
-    formData.append('type', 'Passport');
+    formData.append('type', Doctypes.Passport);
 
     for (let field of Object.keys(this.passportForm.value)) {
       if (field === 'bornDate') {

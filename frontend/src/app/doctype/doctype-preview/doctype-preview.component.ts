@@ -1,6 +1,6 @@
 import { Doctypes } from 'src/app/public/doctypes';
 
-import { UserService } from './../../user/user.service';
+import { UserService } from '../../user/user.service';
 import { DocumentService } from 'src/app/document.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { jsPDF } from 'jspdf';
 })
 export class DoctypePreviewComponent implements OnInit {
   @ViewChild('doc') doc!: ElementRef;
-
+  currentUser!: any
   currentDocument!: any;
   Doctypes: any = Doctypes;
   constructor(
@@ -36,21 +36,32 @@ export class DoctypePreviewComponent implements OnInit {
           this.currentDocument = document;
         });
     });
+
+    this.userService.getCurrentUser().subscribe(user => {
+      this.currentUser = user
+    })
   }
 
   downloadAsPdf() {
-    const pdfDoc = new jsPDF({orientation: 'p', unit: 'pt'});
+    const pdfDoc = new jsPDF({ orientation: 'p', unit: 'pt' });
 
     const doc = this.doc.nativeElement;
 
-    pdfDoc.html(doc, {callback: (pdf) => {
-      pdf.save(`${this.currentDocument.type}_${this.currentDocument.firstName}_${this.currentDocument.lastName}.pdf`)
-    }});
-
+    pdfDoc.html(doc, {
+      callback: (pdf) => {
+        pdf.save(
+          `${this.currentDocument.type}_${this.currentUser.firstName}_${this.currentUser.lastName}.pdf`
+        );
+      },
+    });
   }
 
   deleteDocument() {
-    this.documentService.deleteDocument({_id: this.userService.isAuthorized(), documentId: this.currentDocument.documentId})
-    this.router.navigate([`/user/${this.userService.isAuthorized()}`])
+
+    this.documentService.deleteDocument({
+      _id: this.userService.isAuthorized(),
+      documentId: this.currentDocument.documentId,
+    }).subscribe()
+    this.router.navigate([`/user/${this.userService.isAuthorized()}`]);
   }
 }

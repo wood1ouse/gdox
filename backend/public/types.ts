@@ -1,6 +1,5 @@
 import { Document, Types } from 'mongoose';
 
-// TODO: interface of Document (use it with documents: Types.DocumentArray<Document>)
 export interface IUser extends Document {
     firstName: string,
     lastName: string

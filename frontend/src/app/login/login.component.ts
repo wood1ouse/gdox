@@ -1,6 +1,5 @@
-import { IUser } from './../../../../backend/public/types';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from './../auth.service';
+import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../user/user.service';

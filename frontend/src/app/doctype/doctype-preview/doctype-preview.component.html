@@ -9,14 +9,19 @@
         <div class="font-mono flex flex-col justify-between p-4 leading-normal">
           <h5 class="font-mono mb-2 text-2x text-centerl font-bold tracking-tight text-gray-900 dark:text-white">
             {{currentDocument.type}} of {{currentDocument.bornCountry}}</h5>
-          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{currentDocument.firstName}}
+          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{currentDocument.firstName}}
             {{currentDocument.lastName}}</h5>
           <div class="font-mono">
 
-            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Gender: <span class="font-bold">{{currentDocument.gender}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Birth Date: <span class="font-bold">{{currentDocument.bornDate}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Tax Code: <span class="font-bold">{{currentDocument.taxCode}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Born Place: <span class="font-bold">{{currentDocument.bornCountry}}, {{currentDocument.bornCity}}</span> </p>
+            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Gender: <span
+                class="font-bold">{{currentDocument.gender}}</span> </p>
+            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Birth Date: <span
+                class="font-bold">{{currentDocument.bornDate}}</span> </p>
+            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Tax Code: <span
+                class="font-bold">{{currentDocument.taxCode}}</span> </p>
+            <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Born Place: <span
+                class="font-bold">{{currentDocument.bornCountry}}, {{currentDocument.bornCity}}</span> </p>
 
           </div>
 
@@ -25,9 +30,23 @@
     </ng-container>
 
     <ng-container *ngSwitchCase="Doctypes.CertificateOfNoCriminalRecord">
-      <P>MY MAN, THIS IS CoCr!</P>
-      <p>{{currentDocument | json}}</p>
-      <img src="http://localhost:4200/{{currentDocument.photoName}}">
+      <div #doc class="flex flex-col items-center">
+        <div
+          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 class="font-mono font-bold text-center mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">
+            {{currentDocument.type}}</h5>
+          <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">According to the legislation, and chapter 887 of the Criminal Code, it is officially confirmed that {{currentUser.firstName}} {{currentUser.lastName}} not have or did not have a criminal record.</p>
+          <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Passport Number: <span
+              class="font-bold">{{currentDocument.passportNumber}}</span> </p>
+          <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Authority: <span
+              class="font-bold">{{currentDocument.authorityNumber}}</span> </p>
+          <p class="font-mono mb-3 font-normal text-gray-700 dark:text-gray-400">Registration: <span
+              class="font-bold">{{currentDocument.registration}}</span> </p>
+              <p class="rounded bg-green-400 text-center font-mono mb-3 font-bold text-green-400 dark:text-green-400">------------  Approved  ------------</p>
+        </div>
+      </div>
+
+
     </ng-container>
 
     <ng-container *ngSwitchCase="Doctypes.DrivingLicense">
@@ -35,8 +54,11 @@
       <p>{{currentDocument | json}}</p>
       <img src="http://localhost:4200/{{currentDocument.photoName}}">
     </ng-container>
-    <button (click)="downloadAsPdf()" class="w-full mt-3 font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg" >Download as PDF</button>
-    <button (click)="deleteDocument()" class="w-full mt-3 font-bold text-white bg-gradient-to-r from-red-400 to-red-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg" >Delete</button>
+    <button (click)="downloadAsPdf()"
+      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg">Download
+      as PDF</button>
+    <button (click)="deleteDocument()"
+      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-red-400 to-red-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg">Delete</button>
 
 
   </div>

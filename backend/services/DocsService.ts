@@ -12,7 +12,7 @@ export default class DocsService {
 		const { userId } = document;
 		delete document.userId;
 
-		UserModel.updateOne(
+		await UserModel.updateOne(
 			{ _id: userId },
 			{
 				$push: {
@@ -24,7 +24,7 @@ export default class DocsService {
 			},
 		).catch((error) => console.log(error));
 
-		return documentId
+		return documentId;
 	};
 
 	static getDocument = async (userDoc: any) => {
@@ -36,5 +36,18 @@ export default class DocsService {
 				return document;
 			}
 		}
+	};
+
+	static deleteDocument = async (userDoc: any) => {
+
+
+		await UserModel.findByIdAndUpdate(
+			userDoc._id,
+			{
+				$pull: {
+					documents: { documentId: new mongoose.Types.ObjectId(userDoc.documentId) },
+				},
+			}
+		).catch(err => console.log(err))
 	};
 }

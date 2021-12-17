@@ -1,3 +1,5 @@
+import { DrivinglicenseModule } from './doctype/drivinglicense/drivinglicense.module';
+import { CriminalrecordModule } from './doctype/criminalrecord/criminalrecord.module';
 import { PassportModule } from './doctype/passport/passport.module';
 import { LoginModule } from './login/login.module';
 import { CommonModule } from '@angular/common';
@@ -14,7 +16,6 @@ import { UserComponent } from './user/user.component';
 import { DocumentListComponent } from './user/document-list/document-list.component';
 import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.component';
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
-import { CriminalrecordComponent } from './doctype/criminalrecord/criminalrecord.component';
 import { DrivinglicenseComponent } from './doctype/drivinglicense/drivinglicense.component';
 import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
 
@@ -26,8 +27,6 @@ import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-previ
     DocumentListComponent,
     DoctypeListComponent,
     DoctypeSwitcherComponent,
-    CriminalrecordComponent,
-    DrivinglicenseComponent,
     DoctypePreviewComponent,
   ],
   imports: [
@@ -38,6 +37,8 @@ import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-previ
     AppRoutingModule,
     CommonModule,
     PassportModule,
+    CriminalrecordModule,
+    DrivinglicenseModule
   ],
   providers: [],
   bootstrap: [AppComponent],
