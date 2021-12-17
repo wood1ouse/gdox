@@ -1,3 +1,4 @@
+import { DocumentListModule } from './user/document-list/document-list.module';
 import { DrivinglicenseModule } from './doctype/drivinglicense/drivinglicense.module';
 import { CriminalrecordModule } from './doctype/criminalrecord/criminalrecord.module';
 import { PassportModule } from './doctype/passport/passport.module';
@@ -13,10 +14,8 @@ import { AppComponent } from './app.component';
 import { RegisterModule } from './register/register.module';
 import { HeaderComponent } from './ui/header/header.component';
 import { UserComponent } from './user/user.component';
-import { DocumentListComponent } from './user/document-list/document-list.component';
 import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.component';
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
-import { DrivinglicenseComponent } from './doctype/drivinglicense/drivinglicense.component';
 import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
 import { ThemeProviderComponent } from './theme-provider/theme-provider.component';
 
@@ -25,7 +24,6 @@ import { ThemeProviderComponent } from './theme-provider/theme-provider.componen
     AppComponent,
     HeaderComponent,
     UserComponent,
-    DocumentListComponent,
     DoctypeListComponent,
     DoctypeSwitcherComponent,
     DoctypePreviewComponent,
@@ -37,6 +35,7 @@ import { ThemeProviderComponent } from './theme-provider/theme-provider.componen
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    DocumentListModule,
     CommonModule,
     PassportModule,
     CriminalrecordModule,
