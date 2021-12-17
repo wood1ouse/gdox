@@ -18,6 +18,7 @@ import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.compon
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
 import { DrivinglicenseComponent } from './doctype/drivinglicense/drivinglicense.component';
 import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
+import { ThemeProviderComponent } from './theme-provider/theme-provider.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-previ
     DoctypeListComponent,
     DoctypeSwitcherComponent,
     DoctypePreviewComponent,
+    ThemeProviderComponent,
   ],
   imports: [
     RegisterModule,

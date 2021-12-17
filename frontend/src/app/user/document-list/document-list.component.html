@@ -1,5 +1,15 @@
+<div  *ngIf="loading">
+  <div class=" lex items-center justify-center space-x-2 animate-bounce">
+    <div class="w-8 h-8 bg-blue-400 rounded-full"></div>
+    <div class="w-8 h-8 bg-green-400 rounded-full"></div>
+    <div class="w-8 h-8 bg-black rounded-full"></div>
+  </div>
+</div>
+
 <div *ngIf="documents.length; else noDocuments" class="grid grid-cols-3 gap-5">
-  <a routerLink= "/preview/{{document.documentId}}" routerLinkActive="router-link-active"  *ngFor="let document of documents"
+
+  <a routerLink="/preview/{{document.documentId}}" routerLinkActive="router-link-active"
+    *ngFor="let document of documents"
     class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer flex transition-all h-50 w-50 items-center justify-center py-5 px-10 shadow-lg hover:shadow-xl  rounded-lg">
     {{document.type}}
   </a>
@@ -17,6 +27,3 @@
     Create new
   </a>
 </ng-template>
-
-
-

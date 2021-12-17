@@ -1,6 +1,6 @@
 <div [ngSwitch]="doctype" class="flex justify-center">
-  <app-passport *ngSwitchCase="Doctypes.Passport"></app-passport>
-  <app-criminalrecord *ngSwitchCase="Doctypes.CertificateOfNoCriminalRecord"></app-criminalrecord>
-  <app-drivinglicense *ngSwitchCase="Doctypes.DrivingLicense"></app-drivinglicense>
+  <app-passport class="p-5 rounded-md mt-5 dark:bg-black" *ngSwitchCase="Doctypes.Passport"></app-passport>
+  <app-criminalrecord class="p-5 mt-5 dark:bg-black rounded-md" *ngSwitchCase="Doctypes.CertificateOfNoCriminalRecord"></app-criminalrecord>
+  <app-drivinglicense class="p-5 mt-5 dark:bg-black rounded-md" *ngSwitchCase="Doctypes.DrivingLicense"></app-drivinglicense>
 </div>
 

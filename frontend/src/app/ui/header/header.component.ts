@@ -1,6 +1,7 @@
 import { UserService } from './../../user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/theme-provider/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   currentUser!: any;
-  constructor(public userService: UserService, private router: Router) {}
+  constructor(public userService: UserService, private router: Router, private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((user) => {
@@ -20,5 +21,9 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.userService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggle():void {
+    this.themeService.toggleTheme()
   }
 }

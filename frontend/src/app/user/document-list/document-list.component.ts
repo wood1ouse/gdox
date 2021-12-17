@@ -9,12 +9,13 @@ import { UserService } from '../user.service';
 })
 export class DocumentListComponent implements OnInit {
   documents: Array<any> = []
+  loading: boolean = true
 
   constructor(private authService: AuthService, private userSerice: UserService) { }
 
   ngOnInit(): void {
     this.authService.getUser(this.userSerice.isAuthorized()).subscribe(user => {
-
+      this.loading = false
       this.documents = user.documents
     })
 

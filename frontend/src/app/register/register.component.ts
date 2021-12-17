@@ -47,8 +47,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (
-      (this.registerForm.valid && this.passwordState === 'medium') ||
-      this.passwordState === 'strong'
+      this.registerForm.valid && this.passwordState === 'medium' ||
+      (this.passwordState === 'strong') && this.passwordMatch
     ) {
       this.authService.register(this.registerForm.value).subscribe({
         next: () => {
