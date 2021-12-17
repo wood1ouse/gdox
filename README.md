@@ -4,13 +4,16 @@ Main Stack: MERN
 
 Frontend
 -
+- TypeScript
 - Angular
 - RxJS
 - Tailwind
 - ngx-bootstrap
+- jsPDF
 
 Backend
 -
+- NodeJS
 - Express, REST
 - MongoDB
 - Mongoose
