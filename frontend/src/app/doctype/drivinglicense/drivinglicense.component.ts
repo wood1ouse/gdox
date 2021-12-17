@@ -31,7 +31,11 @@ export class DrivinglicenseComponent implements OnInit {
     medSertificate: '',
   };
 
-  constructor(private userService: UserService, private router: Router, private documentService: DocumentService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private documentService: DocumentService
+  ) {}
 
   ngOnInit(): void {
     this.drivingLicenseForm = new FormGroup({
@@ -52,7 +56,18 @@ export class DrivinglicenseComponent implements OnInit {
         Validators.required,
         Validators.pattern(SIXNUMS),
       ]),
+      photo: new FormControl('', [Validators.required]),
     });
+  }
+
+  onChange(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.drivingLicenseForm.get('photo')?.setValue(event.target.files[0]);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   onSubmit(): void {
@@ -60,25 +75,28 @@ export class DrivinglicenseComponent implements OnInit {
       ? 'All fields must be filled'
       : '';
 
-    this.frontendErrors.passportSeries = this.drivingLicenseForm.get('taxCode')
-      ?.invalid
-      ? 'Tax code must have length of 10'
+    this.frontendErrors.passportSeries = this.drivingLicenseForm.get(
+      'passportSeries'
+    )?.invalid
+      ? 'Passport Series contains first 4 numbers of your Passport'
       : '';
 
-    this.frontendErrors.passportNumber = this.drivingLicenseForm.get('taxCode')
-      ?.invalid
-      ? 'Tax code must have length of 10'
+    this.frontendErrors.passportNumber = this.drivingLicenseForm.get(
+      'passportNumber'
+    )?.invalid
+      ? 'Passport Number contains last 6 numbers of your Passport'
       : '';
 
     this.frontendErrors.authorityNumber = this.drivingLicenseForm.get(
-      'bornDate'
+      'authorityNumber'
     )?.invalid
-      ? 'You must be at least 14 years'
+      ? 'Authority number must contains 4 numbers'
       : '';
 
-    this.frontendErrors.medSertificate = this.drivingLicenseForm.get('bornDate')
-      ?.invalid
-      ? 'You must be at least 14 years'
+    this.frontendErrors.medSertificate = this.drivingLicenseForm.get(
+      'medSertificate'
+    )?.invalid
+      ? 'Medical Sertificate contains 4 numbers'
       : '';
 
     this.hasErrors = Boolean(...Object.values(this.frontendErrors));
@@ -86,16 +104,15 @@ export class DrivinglicenseComponent implements OnInit {
     const formData = new FormData();
 
     formData.append('userId', this.userService.isAuthorized());
-    formData.append('type', Doctypes.DrivingLicense)
+    formData.append('type', Doctypes.DrivingLicense);
 
     for (let field of Object.keys(this.drivingLicenseForm.value)) {
-      formData.append(field, this.drivingLicenseForm.get(field)?.value)
+      formData.append(field, this.drivingLicenseForm.get(field)?.value);
     }
 
     if (this.drivingLicenseForm.valid) {
       this.documentService.createDocument(formData).subscribe((doc) => {
         this.router.navigate([`/preview/${doc}`]);
-
       });
     }
   }
