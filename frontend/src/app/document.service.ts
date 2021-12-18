@@ -10,14 +10,14 @@ export class DocumentService {
   constructor(private http: HttpClient) { }
 
   createDocument(document: any): Observable<any> {
-    return this.http.post('http://localhost:4200/documentlist/create', document)
+    return this.http.post('documentlist/create', document)
   }
 
   getDocument(userDoc: any) {
-    return this.http.post('http://localhost:4200/document', userDoc)
+    return this.http.post('document', userDoc)
   }
 
   deleteDocument(userDoc: any) {
-    return this.http.post('http://localhost:4200/document/delete', userDoc)
+    return this.http.post('document/delete', userDoc)
   }
 }
