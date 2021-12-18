@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon ./backend/index.ts",
+    "serve": "ts-node ./backend/index.ts",
+    "client": "npm run start --prefix ./frontend",
+    "start": "concurrently \"npm run serve\" \"npm run serve\" \"npm run client\"",
+    "open": "npm i && npm i --prefix ./frontend && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +16,7 @@
   "dependencies": {
     "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.0.1",
+    "concurrently": "^6.5.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",

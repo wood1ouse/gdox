@@ -14,17 +14,17 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(user: IUser) {
-    return this.http.post('register' , user, {observe: 'response'})
+    return this.http.post('http://localhost:4200/register' , user, {observe: 'response'})
     .pipe(catchError(this.handleError))
   }
 
   login(user: IUser) {
-    return this.http.post('login', user, {observe: 'response'})
+    return this.http.post('http://localhost:4200/login', user, {observe: 'response'})
     .pipe(catchError(this.handleError))
   }
 
   getUser(id: string | null): Observable<any> {
-    return this.http.get(`user/${id}`)
+    return this.http.get(`http://localhost:4200/user/${id}`)
   }
 
   private handleError(error: HttpErrorResponse) {

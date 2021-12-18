@@ -10,6 +10,6 @@ export class DoctypeListService {
   constructor(private http: HttpClient) {}
 
   getDoctypes(): Observable<any> {
-    return this.http.get('documentlist')
+    return this.http.get('http://localhost:4200/documentlist')
   }
 }

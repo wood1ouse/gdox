@@ -9,7 +9,7 @@ import cors from 'cors'
 import fileUpload from 'express-fileupload'
 
 const app = express();
-const PORT = process.env.PORT || 4200;
+const PORT = 4200;
 
 app.use(function (req, res, next) {
 
