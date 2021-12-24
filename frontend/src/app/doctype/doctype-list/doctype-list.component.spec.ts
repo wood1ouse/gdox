@@ -8,9 +8,8 @@ describe('DoctypeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DoctypeListComponent ]
-    })
-    .compileComponents();
+      declarations: [DoctypeListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

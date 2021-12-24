@@ -8,9 +8,8 @@ describe('CriminalrecordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CriminalrecordComponent ]
-    })
-    .compileComponents();
+      declarations: [CriminalrecordComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

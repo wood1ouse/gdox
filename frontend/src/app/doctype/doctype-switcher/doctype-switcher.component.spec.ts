@@ -8,9 +8,8 @@ describe('DoctypeSwitcherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DoctypeSwitcherComponent ]
-    })
-    .compileComponents();
+      declarations: [DoctypeSwitcherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

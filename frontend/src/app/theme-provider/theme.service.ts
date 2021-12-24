@@ -15,12 +15,11 @@ export class ThemeService {
     localStorage.removeItem('darkTheme');
     localStorage.setItem('darkTheme', this.darkMode.toString());
 
-    console.log(localStorage.getItem('darkMode'));
-
-
     const htmlTag = document.getElementsByTagName('html').item(0);
-    localStorage.getItem('darkTheme') === 'true'
-      ? htmlTag?.classList.add('dark')
-      : htmlTag?.classList.remove('dark');
+    if (localStorage.getItem('darkTheme') === 'true') {
+      htmlTag?.classList.add('dark');
+    } else {
+      htmlTag?.classList.remove('dark');
+    }
   }
 }

@@ -8,8 +8,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [PassportComponent],
-  imports: [ ReactiveFormsModule, CommonModule, BrowserAnimationsModule,
-    BsDatepickerModule.forRoot(), RouterModule],
-  exports: [PassportComponent]
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    RouterModule,
+  ],
+  exports: [PassportComponent],
 })
 export class PassportModule {}

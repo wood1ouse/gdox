@@ -8,9 +8,8 @@ describe('DoctypePreviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DoctypePreviewComponent ]
-    })
-    .compileComponents();
+      declarations: [DoctypePreviewComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

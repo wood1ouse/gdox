@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DoctypeListService {
-
   constructor(private http: HttpClient) {}
 
   getDoctypes(): Observable<any> {
-    return this.http.get('http://localhost:4200/documentlist')
+    return this.http.get('http://localhost:4200/documentlist');
   }
 }

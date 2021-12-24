@@ -1,23 +1,22 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DocumentService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createDocument(document: any): Observable<any> {
-    return this.http.post('http://localhost:4200/documentlist/create', document)
+    return this.http.post('http://localhost:4200/documentlist/create', document);
   }
 
   getDocument(userDoc: any) {
-    return this.http.post('http://localhost:4200/document', userDoc)
+    return this.http.post('http://localhost:4200/document', userDoc);
   }
 
   deleteDocument(userDoc: any) {
-    return this.http.post('http://localhost:4200/document/delete', userDoc)
+    return this.http.post('http://localhost:4200/document/delete', userDoc);
   }
 }

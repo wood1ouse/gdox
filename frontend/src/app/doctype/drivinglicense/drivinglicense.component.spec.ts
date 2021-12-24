@@ -8,9 +8,8 @@ describe('DrivinglicenseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DrivinglicenseComponent ]
-    })
-    .compileComponents();
+      declarations: [DrivinglicenseComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

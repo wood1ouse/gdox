@@ -1,85 +1,112 @@
 <form [formGroup]="drivingLicenseForm" class="w-[550px] mt-10">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+      <label
+        class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="grid-first-name"
+      >
         Passport Series
       </label>
       <input
         class="disabled appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-2 leading-tight focus:bg-white"
-        id="grid-first-name" type="text" placeholder="0001" formControlName="passportSeries">
+        id="grid-first-name"
+        type="text"
+        placeholder="0001"
+        formControlName="passportSeries"
+      />
     </div>
     <div class="w-full md:w-1/2 px-3">
-      <label class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      <label
+        class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="grid-last-name"
+      >
         Passport Number
       </label>
       <input
         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        id="grid-last-name" type="text" placeholder="111010" formControlName="passportNumber">
+        id="grid-last-name"
+        type="text"
+        placeholder="111010"
+        formControlName="passportNumber"
+      />
     </div>
-
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
-      <label class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+      <label
+        class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="grid-password"
+      >
         Authority Number
       </label>
       <input
         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        placeholder="0101" formControlName="authorityNumber">
+        placeholder="0101"
+        formControlName="authorityNumber"
+      />
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-2">
     <div class="w-full px-3 mb-6 md:mb-0">
-      <label class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+      <label
+        class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="grid-zip"
+      >
         Registration
       </label>
-      <input type="text"
+      <input
+        type="text"
         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        type="text" placeholder="Ukraine, Zhytomir" formControlName="registration">
+        type="text"
+        placeholder="Ukraine, Zhytomir"
+        formControlName="registration"
+      />
     </div>
-    <div class="w-full px-3 mt-4 md:mb-0 ">
-      <label class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+    <div class="w-full px-3 mt-4 md:mb-0">
+      <label
+        class="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      >
         Medical Certificate Series 083
       </label>
 
-      <input type="text"
+      <input
+        type="text"
         class="appearance-none block mt-6 w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        type="text" placeholder="023321" formControlName="medSertificate">
-
+        type="text"
+        placeholder="023321"
+        formControlName="medSertificate"
+      />
     </div>
-
   </div>
 
   <div class="flex justify-center" w-full>
     <div class="mb-3 w-full">
-      <label for="formFile" class="dark:text-white form-label inline-block mb-2 text-gray-700 text-s font-bold">Attach photo below:
+      <label
+        for="formFile"
+        class="dark:text-white form-label inline-block mb-2 text-gray-700 text-s font-bold"
+        >Attach photo below:
       </label>
-      <input formArrayName="photo" (change)="onChange($event)" class="form-control
-      block
-      w-full
-      text-base
-      font-normal
-      text-blue-700
-      bg-white bg-clip-padding
-      border border-solid border-blue-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-blue-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile">
+      <input
+        formArrayName="photo"
+        (change)="onChange($event)"
+        class="form-control block w-full text-base font-normal text-blue-700 bg-white bg-clip-padding border border-solid border-blue-300 rounded transition ease-in-out m-0 focus:text-blue-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        type="file"
+        id="formFile"
+      />
     </div>
   </div>
-
 
   <div *ngIf="hasErrors">
-    <div class="mb-2 text-red-500 text-s font-bold" *ngFor="let error of frontendErrors | keyvalue">{{error.value}}
+    <div class="mb-2 text-red-500 text-s font-bold" *ngFor="let error of frontendErrors | keyvalue">
+      {{ error.value }}
     </div>
   </div>
 
-
-  <button (click)="onSubmit()"
+  <button
+    (click)="onSubmit()"
     class="transition duration-75 bg-blue-500 ease-in-out hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-    type="button">
+    type="button"
+  >
     Create
   </button>
 </form>

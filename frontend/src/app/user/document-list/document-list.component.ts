@@ -10,29 +10,25 @@ import { UserService } from '../user.service';
 })
 export class DocumentListComponent implements OnInit {
   documents: Array<any> = [];
-  filteredDocument: Array<any> = []
+
+  filteredDocument: Array<any> = [];
+
   loading: boolean = true;
 
   searchInputForm: FormGroup = new FormGroup({
     searchValue: new FormControl(''),
   });
 
-  constructor(
-    private authService: AuthService,
-    private userSerice: UserService
-  ) {}
+  constructor(private authService: AuthService, private userSerice: UserService) {}
 
   ngOnInit(): void {
-    this.authService
-      .getUser(this.userSerice.isAuthorized())
-      .subscribe({
-        next: (user) => {
-          this.loading = false;
-          this.documents = user.documents;
-          this.filteredDocument = this.documents
-
-        }
-      });
+    this.authService.getUser(this.userSerice.isAuthorized()).subscribe({
+      next: (user) => {
+        this.loading = false;
+        this.documents = user.documents;
+        this.filteredDocument = this.documents;
+      },
+    });
 
     this.searchInputForm.get('searchValue')?.valueChanges.subscribe((p) => {
       this.filteredDocument = this.performFilter(p);
@@ -40,11 +36,8 @@ export class DocumentListComponent implements OnInit {
   }
 
   performFilter(filterBy: string) {
-
     return this.documents.filter((document) => {
-      return document.type
-        .toLocaleLowerCase()
-        .includes(filterBy.toLocaleLowerCase());
+      return document.type.toLocaleLowerCase().includes(filterBy.toLocaleLowerCase());
     });
   }
 }

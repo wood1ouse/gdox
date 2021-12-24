@@ -1,16 +1,29 @@
-<div class=" flex justify-between items-center h-15 w-full bg-blue-500 p-2 rounded-md">
-  <div class="transiti relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-    <input (click)="toggle()" type="checkbox" name="toggle" id="toggle"
-      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+<div class="flex justify-between items-center h-15 w-full bg-blue-500 p-2 rounded-md">
+  <div
+    class="transiti relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in"
+  >
+    <input
+      (click)="toggle()"
+      type="checkbox"
+      name="toggle"
+      id="toggle"
+      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+    />
+    <label
+      for="toggle"
+      class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
+    ></label>
   </div>
-  <div class="ml-3 text-white font-bold">Good day,
-    <a routerLink="/user/{{currentUser}}">
-      {{currentUser?.firstName}} {{currentUser?.lastName}}
+  <div class="ml-3 text-white font-bold">
+    Good day,
+    <a routerLink="/user/{{ currentUser }}">
+      {{ currentUser?.firstName }} {{ currentUser?.lastName }}
     </a>
   </div>
-  <button (click)="logout()"
-    class="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4  rounded-md">
+  <button
+    (click)="logout()"
+    class="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+  >
     Exit
   </button>
 </div>

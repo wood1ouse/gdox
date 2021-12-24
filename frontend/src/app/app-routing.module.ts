@@ -10,18 +10,17 @@ import { UserGuard } from './user/user.guard';
 import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'/login', pathMatch: "full"},
-  {path: 'documentlist', component: DoctypeListComponent, pathMatch: 'full'},
-  {path: 'documentlist/:doctype', component:DoctypeSwitcherComponent},
-  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-  {path: 'register', component: RegisterComponent},
-  {path: 'user/:id', component: UserComponent, canActivate: [UserGuard]},
-  {path: 'preview/:id', component: DoctypePreviewComponent}
-
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'documentlist', component: DoctypeListComponent, pathMatch: 'full' },
+  { path: 'documentlist/:doctype', component: DoctypeSwitcherComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user/:id', component: UserComponent, canActivate: [UserGuard] },
+  { path: 'preview/:id', component: DoctypePreviewComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

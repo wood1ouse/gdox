@@ -15,18 +15,22 @@ import { Router } from '@angular/router';
 })
 export class PassportComponent implements OnInit {
   currentUser!: IUser;
+
   passportForm!: FormGroup;
+
   frontendErrors: { filled: string; taxCode: string; bornDate: string } = {
     filled: '',
     taxCode: '',
     bornDate: '',
   };
+
   hasErrors: boolean = false;
+
   constructor(
     private userService: UserService,
     private validator: DoctypeValidatorService,
     private documentService: DocumentService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -37,10 +41,7 @@ export class PassportComponent implements OnInit {
         gender: new FormControl('', [Validators.required]),
         firstName: new FormControl(user.firstName, [Validators.required]),
         lastName: new FormControl(user.lastName),
-        taxCode: new FormControl('', [
-          Validators.required,
-          Validators.pattern(TAXCODE),
-        ]),
+        taxCode: new FormControl('', [Validators.required, Validators.pattern(TAXCODE)]),
         bornCountry: new FormControl('', [Validators.required]),
         bornCity: new FormControl('', [Validators.required]),
         bornDate: new FormControl('', [this.validator.dateValidator]),
@@ -60,9 +61,7 @@ export class PassportComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.frontendErrors.filled = this.passportForm.invalid
-      ? 'All fields must be filled'
-      : '';
+    this.frontendErrors.filled = this.passportForm.invalid ? 'All fields must be filled' : '';
 
     this.frontendErrors.taxCode = this.passportForm.get('taxCode')?.invalid
       ? 'Tax code must have length of 10'
@@ -81,10 +80,7 @@ export class PassportComponent implements OnInit {
 
     for (let field of Object.keys(this.passportForm.value)) {
       if (field === 'bornDate') {
-        formData.append(
-          field,
-          this.passportForm.get(field)?.value.toLocaleDateString()
-        );
+        formData.append(field, this.passportForm.get(field)?.value.toLocaleDateString());
       } else {
         formData.append(field, this.passportForm.get(field)?.value);
       }
@@ -93,7 +89,6 @@ export class PassportComponent implements OnInit {
     if (this.passportForm.valid) {
       this.documentService.createDocument(formData).subscribe((doc) => {
         this.router.navigate([`/preview/${doc}`]);
-
       });
     }
   }

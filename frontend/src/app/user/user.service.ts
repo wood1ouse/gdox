@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-
   constructor(private authService: AuthService) {}
 
   setCurrentUser(user: any): void {
@@ -13,14 +12,14 @@ export class UserService {
   }
 
   isAuthorized(): any {
-    return localStorage.getItem('currentUser')
+    return localStorage.getItem('currentUser');
   }
 
   getCurrentUser(): Observable<any> {
-    return this.authService.getUser(localStorage.getItem('currentUser'))
+    return this.authService.getUser(localStorage.getItem('currentUser'));
   }
 
-  logout(): void{
-    localStorage.removeItem('currentUser')
+  logout(): void {
+    localStorage.removeItem('currentUser');
   }
 }

@@ -3,11 +3,10 @@ import { UserService } from './user/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService) {}
 
-  }
   title = 'gdox';
 }

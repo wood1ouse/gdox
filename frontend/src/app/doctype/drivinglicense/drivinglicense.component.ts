@@ -14,7 +14,9 @@ import { DocumentService } from 'src/app/document.service';
 })
 export class DrivinglicenseComponent implements OnInit {
   currentUser!: IUser;
+
   drivingLicenseForm!: FormGroup;
+
   hasErrors: boolean = false;
 
   frontendErrors: {
@@ -34,28 +36,16 @@ export class DrivinglicenseComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private documentService: DocumentService
+    private documentService: DocumentService,
   ) {}
 
   ngOnInit(): void {
     this.drivingLicenseForm = new FormGroup({
-      passportSeries: new FormControl('', [
-        Validators.required,
-        Validators.pattern(FOURNUMS),
-      ]),
-      passportNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(SIXNUMS),
-      ]),
-      authorityNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(FOURNUMS),
-      ]),
+      passportSeries: new FormControl('', [Validators.required, Validators.pattern(FOURNUMS)]),
+      passportNumber: new FormControl('', [Validators.required, Validators.pattern(SIXNUMS)]),
+      authorityNumber: new FormControl('', [Validators.required, Validators.pattern(FOURNUMS)]),
       registration: new FormControl('', [Validators.required]),
-      medSertificate: new FormControl('', [
-        Validators.required,
-        Validators.pattern(SIXNUMS),
-      ]),
+      medSertificate: new FormControl('', [Validators.required, Validators.pattern(SIXNUMS)]),
       photo: new FormControl('', [Validators.required]),
     });
   }
@@ -71,31 +61,21 @@ export class DrivinglicenseComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.frontendErrors.filled = this.drivingLicenseForm.invalid
-      ? 'All fields must be filled'
-      : '';
+    this.frontendErrors.filled = this.drivingLicenseForm.invalid ? 'All fields must be filled' : '';
 
-    this.frontendErrors.passportSeries = this.drivingLicenseForm.get(
-      'passportSeries'
-    )?.invalid
+    this.frontendErrors.passportSeries = this.drivingLicenseForm.get('passportSeries')?.invalid
       ? 'Passport Series contains first 4 numbers of your Passport'
       : '';
 
-    this.frontendErrors.passportNumber = this.drivingLicenseForm.get(
-      'passportNumber'
-    )?.invalid
+    this.frontendErrors.passportNumber = this.drivingLicenseForm.get('passportNumber')?.invalid
       ? 'Passport Number contains last 6 numbers of your Passport'
       : '';
 
-    this.frontendErrors.authorityNumber = this.drivingLicenseForm.get(
-      'authorityNumber'
-    )?.invalid
+    this.frontendErrors.authorityNumber = this.drivingLicenseForm.get('authorityNumber')?.invalid
       ? 'Authority number must contains 4 numbers'
       : '';
 
-    this.frontendErrors.medSertificate = this.drivingLicenseForm.get(
-      'medSertificate'
-    )?.invalid
+    this.frontendErrors.medSertificate = this.drivingLicenseForm.get('medSertificate')?.invalid
       ? 'Medical Sertificate contains 4 numbers'
       : '';
 

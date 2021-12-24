@@ -17,7 +17,6 @@ import { UserComponent } from './user/user.component';
 import { DoctypeListComponent } from './doctype/doctype-list/doctype-list.component';
 import { DoctypeSwitcherComponent } from './doctype/doctype-switcher/doctype-switcher.component';
 import { DoctypePreviewComponent } from './doctype/doctype-preview/doctype-preview.component';
-import { ThemeProviderComponent } from './theme-provider/theme-provider.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { ThemeProviderComponent } from './theme-provider/theme-provider.componen
     DoctypeListComponent,
     DoctypeSwitcherComponent,
     DoctypePreviewComponent,
-    ThemeProviderComponent,
   ],
   imports: [
     RegisterModule,
@@ -39,7 +37,7 @@ import { ThemeProviderComponent } from './theme-provider/theme-provider.componen
     CommonModule,
     PassportModule,
     CriminalrecordModule,
-    DrivinglicenseModule
+    DrivinglicenseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

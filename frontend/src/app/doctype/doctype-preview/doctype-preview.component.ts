@@ -15,14 +15,18 @@ import { jsPDF } from 'jspdf';
 })
 export class DoctypePreviewComponent implements OnInit {
   @ViewChild('doc') doc!: ElementRef;
-  currentUser!: any
+
+  currentUser!: any;
+
   currentDocument!: any;
+
   Doctypes: any = Doctypes;
+
   constructor(
     private route: ActivatedRoute,
     private documentService: DocumentService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +41,9 @@ export class DoctypePreviewComponent implements OnInit {
         });
     });
 
-    this.userService.getCurrentUser().subscribe(user => {
-      this.currentUser = user
-    })
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
   downloadAsPdf() {
@@ -50,18 +54,19 @@ export class DoctypePreviewComponent implements OnInit {
     pdfDoc.html(doc, {
       callback: (pdf) => {
         pdf.save(
-          `${this.currentDocument.type}_${this.currentUser.firstName}_${this.currentUser.lastName}.pdf`
+          `${this.currentDocument.type}_${this.currentUser.firstName}_${this.currentUser.lastName}.pdf`,
         );
       },
     });
   }
 
   deleteDocument() {
-
-    this.documentService.deleteDocument({
-      _id: this.userService.isAuthorized(),
-      documentId: this.currentDocument.documentId,
-    }).subscribe()
+    this.documentService
+      .deleteDocument({
+        _id: this.userService.isAuthorized(),
+        documentId: this.currentDocument.documentId,
+      })
+      .subscribe();
     this.router.navigate([`/user/${this.userService.isAuthorized()}`]);
   }
 }

@@ -1,5 +1,5 @@
 import { MEDIUMPASSWORD, STRONGPASSWORD } from './../public/regex';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
-  filledError: boolean = false;
-  backendErrors: string = '';
-  passwordState: string = 'weak';
-  passwordMatch: boolean = false;
+export class RegisterComponent {
+  filledError = false;
+
+  backendErrors = '';
+
+  passwordState = 'weak';
+
+  passwordMatch = false;
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
@@ -32,23 +35,18 @@ export class RegisterComponent implements OnInit {
         this.passwordState = 'medium';
       } else this.passwordState = 'weak';
     });
-    this.registerForm
-      .get('confirmPassword')
-      ?.valueChanges.subscribe((confirmPassword) => {
-        this.passwordMatch =
-          confirmPassword === this.registerForm.get('password')?.value ? true : false;
+    this.registerForm.get('confirmPassword')?.valueChanges.subscribe((confirmPassword) => {
+      this.passwordMatch =
+        confirmPassword === this.registerForm.get('password')?.value ? true : false;
 
       console.log(this.passwordMatch);
-
-      });
+    });
   }
-
-  ngOnInit(): void {}
 
   onSubmit(): void {
     if (
-      this.registerForm.valid && this.passwordState === 'medium' ||
-      (this.passwordState === 'strong') && this.passwordMatch
+      (this.registerForm.valid && this.passwordState === 'medium') ||
+      (this.passwordState === 'strong' && this.passwordMatch)
     ) {
       this.authService.register(this.registerForm.value).subscribe({
         next: () => {

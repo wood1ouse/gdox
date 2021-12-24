@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 })
 export class CriminalrecordComponent implements OnInit {
   criminalRecorForm!: FormGroup;
-  currentUser!: any
+
+  currentUser!: any;
+
   frontendErrors: {
     passportNumber: string;
     authorityNumber: string;
@@ -23,40 +25,31 @@ export class CriminalrecordComponent implements OnInit {
     passportNumber: '',
     authorityNumber: '',
   };
+
   hasErrors: boolean = false;
 
-  constructor(private userService: UserService, private documentService: DocumentService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private documentService: DocumentService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.criminalRecorForm = new FormGroup({
-      passportNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(SIXNUMS),
-      ]),
-      authorityNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(FOURNUMS),
-      ]),
+      passportNumber: new FormControl('', [Validators.required, Validators.pattern(SIXNUMS)]),
+      authorityNumber: new FormControl('', [Validators.required, Validators.pattern(FOURNUMS)]),
       registration: new FormControl('', [Validators.required]),
     });
-
-
   }
 
   onSubmit(): void {
-    this.frontendErrors.filled = this.criminalRecorForm.invalid
-      ? 'All fields must be filled'
-      : '';
+    this.frontendErrors.filled = this.criminalRecorForm.invalid ? 'All fields must be filled' : '';
 
-    this.frontendErrors.passportNumber = this.criminalRecorForm.get(
-      'passportNumber'
-    )?.invalid
+    this.frontendErrors.passportNumber = this.criminalRecorForm.get('passportNumber')?.invalid
       ? 'Passport number must contain 6 numbers'
       : '';
 
-    this.frontendErrors.authorityNumber = this.criminalRecorForm.get(
-      'authorityNumber'
-    )?.invalid
+    this.frontendErrors.authorityNumber = this.criminalRecorForm.get('authorityNumber')?.invalid
       ? 'Authority number must contain 4 numbers'
       : '';
 
@@ -74,7 +67,6 @@ export class CriminalrecordComponent implements OnInit {
     if (this.criminalRecorForm.valid) {
       this.documentService.createDocument(formData).subscribe((doc) => {
         this.router.navigate([`/preview/${doc}`]);
-
       });
     }
   }

@@ -1,30 +1,40 @@
 <div class="h-screen w-screen flex justify-center items-center" *ngIf="currentDocument">
-
   <div class="flex-col items-center justify-center" [ngSwitch]="currentDocument.type">
     <ng-container *ngSwitchCase="Doctypes.Passport">
-      <div #doc
-        class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 ">
-        <img class="ml-3 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src="http://localhost:4200/{{currentDocument.photoName}}" alt="">
+      <div
+        #doc
+        class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100"
+      >
+        <img
+          class="ml-3 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          src="http://localhost:4200/{{ currentDocument.photoName }}"
+          alt=""
+        />
         <div class="font-mono flex flex-col justify-between p-4 leading-normal">
-          <h5 class="font-mono mb-2 text-2x text-centerl font-bold tracking-tight text-gray-900 ">
-            {{currentDocument.type}} of {{currentDocument.bornCountry}}</h5>
-          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-            {{currentDocument.firstName}}
-            {{currentDocument.lastName}}</h5>
+          <h5 class="font-mono mb-2 text-2x text-centerl font-bold tracking-tight text-gray-900">
+            {{ currentDocument.type }} of {{ currentDocument.bornCountry }}
+          </h5>
+          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            {{ currentDocument.firstName }}
+            {{ currentDocument.lastName }}
+          </h5>
           <div class="font-mono">
-
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Gender: <span
-                class="font-bold">{{currentDocument.gender}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Birth Date: <span
-                class="font-bold">{{currentDocument.bornDate}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Tax Code: <span
-                class="font-bold">{{currentDocument.taxCode}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Born Place: <span
-                class="font-bold">{{currentDocument.bornCountry}}, {{currentDocument.bornCity}}</span> </p>
-
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Gender: <span class="font-bold">{{ currentDocument.gender }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Birth Date: <span class="font-bold">{{ currentDocument.bornDate }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Tax Code: <span class="font-bold">{{ currentDocument.taxCode }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Born Place:
+              <span class="font-bold"
+                >{{ currentDocument.bornCountry }}, {{ currentDocument.bornCity }}</span
+              >
+            </p>
           </div>
-
         </div>
       </div>
     </ng-container>
@@ -32,62 +42,85 @@
     <ng-container *ngSwitchCase="Doctypes.CertificateOfNoCriminalRecord">
       <div #doc class="flex flex-col items-center">
         <div
-          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 ">
-          <h5 class="font-mono font-bold text-center mb-2 text-2xl tracking-tight text-gray-900 ">
-            {{currentDocument.type}}</h5>
-          <p class="font-mono mb-3 font-normal text-gray-700 ">According to the legislation, and
-            chapter 887 of the Criminal Code, it is officially confirmed that {{currentUser.firstName}}
-            {{currentUser.lastName}} not have or did not have a criminal record.</p>
-          <p class="font-mono mb-3 font-normal text-gray-700 ">Passport Number: <span
-              class="font-bold">{{currentDocument.passportNumber}}</span> </p>
-          <p class="font-mono mb-3 font-normal text-gray-700 ">Authority: <span
-              class="font-bold">{{currentDocument.authorityNumber}}</span> </p>
-          <p class="font-mono mb-3 font-normal text-gray-700 ">Registration: <span
-              class="font-bold">{{currentDocument.registration}}</span> </p>
-          <p class="rounded  text-center font-mono mb-3 font-bold ">------------ Approved
-            ------------</p>
+          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100"
+        >
+          <h5 class="font-mono font-bold text-center mb-2 text-2xl tracking-tight text-gray-900">
+            {{ currentDocument.type }}
+          </h5>
+          <p class="font-mono mb-3 font-normal text-gray-700">
+            According to the legislation, and chapter 887 of the Criminal Code, it is officially
+            confirmed that {{ currentUser.firstName }} {{ currentUser.lastName }} not have or did
+            not have a criminal record.
+          </p>
+          <p class="font-mono mb-3 font-normal text-gray-700">
+            Passport Number: <span class="font-bold">{{ currentDocument.passportNumber }}</span>
+          </p>
+          <p class="font-mono mb-3 font-normal text-gray-700">
+            Authority: <span class="font-bold">{{ currentDocument.authorityNumber }}</span>
+          </p>
+          <p class="font-mono mb-3 font-normal text-gray-700">
+            Registration: <span class="font-bold">{{ currentDocument.registration }}</span>
+          </p>
+          <p class="rounded text-center font-mono mb-3 font-bold">
+            ------------ Approved ------------
+          </p>
         </div>
       </div>
-
-
     </ng-container>
 
     <ng-container *ngSwitchCase="Doctypes.DrivingLicense">
-      <div #doc
-        class="w-[800px] flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 ">
-        <img class="ml-3 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src="http://localhost:4200/{{currentDocument.photoName}}" alt="">
+      <div
+        #doc
+        class="w-[800px] flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100"
+      >
+        <img
+          class="ml-3 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          src="http://localhost:4200/{{ currentDocument.photoName }}"
+          alt=""
+        />
         <div class="font-mono flex flex-col justify-between p-4 leading-normal">
-          <h5 class="font-mono text-xl font-bold tracking-tight text-gray-900 ">
-            {{currentDocument.type}}</h5>
-          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-            {{currentUser.firstName}}
-            {{currentUser.lastName}}</h5>
+          <h5 class="font-mono text-xl font-bold tracking-tight text-gray-900">
+            {{ currentDocument.type }}
+          </h5>
+          <h5 class="font-mono mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            {{ currentUser.firstName }}
+            {{ currentUser.lastName }}
+          </h5>
           <div class="font-mono">
-
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Passport Series: <span
-                class="font-bold">{{currentDocument.passportSeries}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Passport Number: <span
-                class="font-bold">{{currentDocument.passportNumber}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Authority: <span
-                class="font-bold">{{currentDocument.authorityNumber}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Registration: <span
-                class="font-bold">{{currentDocument.registration}}{{currentDocument.bornCity}}</span> </p>
-            <p class="font-mono mb-3 font-normal text-gray-700 ">Medical Certificate Series 083: <span
-                class="font-bold">{{currentDocument.medSertificate}}</span> </p>
-
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Passport Series: <span class="font-bold">{{ currentDocument.passportSeries }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Passport Number: <span class="font-bold">{{ currentDocument.passportNumber }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Authority: <span class="font-bold">{{ currentDocument.authorityNumber }}</span>
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Registration:
+              <span class="font-bold"
+                >{{ currentDocument.registration }}{{ currentDocument.bornCity }}</span
+              >
+            </p>
+            <p class="font-mono mb-3 font-normal text-gray-700">
+              Medical Certificate Series 083:
+              <span class="font-bold">{{ currentDocument.medSertificate }}</span>
+            </p>
           </div>
-
         </div>
       </div>
     </ng-container>
-    <button (click)="downloadAsPdf()"
-      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg">Download
-      as PDF</button>
-    <button (click)="deleteDocument()"
-      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-red-400 to-red-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg">Delete</button>
-
-
+    <button
+      (click)="downloadAsPdf()"
+      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-green-400 to-green-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg"
+    >
+      Download as PDF
+    </button>
+    <button
+      (click)="deleteDocument()"
+      class="w-full mt-3 font-bold text-white bg-gradient-to-r from-red-400 to-red-500 cursor-pointer flex transition-all h-50 justify-center py-5 px-10 bg-cyan shadow-lg hover:shadow-xl rounded-lg"
+    >
+      Delete
+    </button>
   </div>
-
 </div>

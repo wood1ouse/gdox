@@ -1,14 +1,14 @@
 module.exports = {
-  mode: "jit",
-  prefix: "",
+  mode: 'jit',
+  prefix: '',
   purge: {
     corePlugins: {
       preflight: false,
     },
     enabled: true,
-    content: ["./src/**/*.{html,ts}"],
+    content: ['./src/**/*.{html,ts}'],
   },
-  darkMode: "class", // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
   },
