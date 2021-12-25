@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  filledError = false
+  filledError = false;
 
-  backendErrors = ''
+  backendErrors = '';
 
-  passwordState = 'weak'
+  passwordState = 'weak';
 
-  passwordMatch = false
+  passwordMatch = false;
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
