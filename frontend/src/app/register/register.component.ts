@@ -1,4 +1,4 @@
-import { MEDIUMPASSWORD, STRONGPASSWORD } from './../public/regex';
+import { MEDIUMPASSWORD, STRONGPASSWORD } from '../public/regex';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  filledError = false;
+  filledError = false
 
-  backendErrors = '';
+  backendErrors = ''
 
-  passwordState = 'weak';
+  passwordState = 'weak'
 
   passwordMatch = false;
 
@@ -30,10 +30,10 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {
     this.registerForm.get('password')?.valueChanges.subscribe((p) => {
       if (p.match(STRONGPASSWORD)) {
-        this.passwordState = 'strong'
+        this.passwordState = 'strong';
       } else if (p.match(MEDIUMPASSWORD)) {
-        this.passwordState = 'medium'
-      } else this.passwordState = 'weak'
+        this.passwordState = 'medium';
+      } else this.passwordState = 'weak';
     });
     this.registerForm.get('confirmPassword')?.valueChanges.subscribe((confirmPassword) => {
       this.passwordMatch =
