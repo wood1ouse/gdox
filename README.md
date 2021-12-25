@@ -23,8 +23,7 @@ Code Style
 -
 - ESLint
 - Prettier
-- Husky lint-staged
-
+- Husky
 # Backend Architecture 
 ![](https://github.com/wood1ouse/gdox/blob/master/rmResources/backend_diagram.png?raw=true)
 
@@ -39,7 +38,7 @@ Registration
 -
 - Collecting information about the user from the form
 - Sending data to the server (when passing validation)
-- Apply "pre-save" mongoose middleweire
+- Apply "pre-save" mongoose middleware
 - Add data to Users collection
 
 Creating a Document (registered user)
