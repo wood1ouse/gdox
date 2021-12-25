@@ -12,8 +12,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "cd frontend && eslint --fix .",
-      "pre-push": "cd frontend && eslint --fix ."
+      "pre-commit": "cd frontend && ng lint --fix",
+      "pre-push": "cd frontend && ng lint --fix"
     }
   },
   "keywords": [],
