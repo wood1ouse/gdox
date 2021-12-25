@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    // RouterModule,
-    PassportModule,
-  ],
+  imports: [CommonModule, PassportModule],
 })
 export class DoctypeSwitcherModule {}

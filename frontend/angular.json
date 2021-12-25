@@ -25,9 +25,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
             "scripts": [],
-            "allowedCommonJsDependencies":[
-              "canvg"
-            ]
+            "allowedCommonJsDependencies": ["canvg"]
           },
           "configurations": {
             "production": {
@@ -88,16 +86,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.mis.css",
-              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "node_modules/@themesberg/flowbite/dist/flowbite.min.css"
-            ],
-            "scripts": [
-              "node_modules/@themesberg/flowbite/dist/flowbite.bundle.js",
-              "node_modules/@themesberg/flowbite/dist/datepicker.bundle.js"
-            ]
+            "styles": ["src/styles.css"],
+            "scripts": []
           }
         },
         "lint": {

@@ -30,10 +30,10 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {
     this.registerForm.get('password')?.valueChanges.subscribe((p) => {
       if (p.match(STRONGPASSWORD)) {
-        this.passwordState = 'strong';
+        this.passwordState = 'strong'
       } else if (p.match(MEDIUMPASSWORD)) {
-        this.passwordState = 'medium';
-      } else this.passwordState = 'weak';
+        this.passwordState = 'medium'
+      } else this.passwordState = 'weak'
     });
     this.registerForm.get('confirmPassword')?.valueChanges.subscribe((confirmPassword) => {
       this.passwordMatch =
