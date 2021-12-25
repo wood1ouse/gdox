@@ -12,14 +12,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --relative",
-      "pre-push": "lint-staged --relative"
+      "pre-commit": "cd frontend && eslint --fix .",
+      "pre-push": "cd frontend && eslint --fix ."
     }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-       "cd frontend && eslint --fix ."
-    ]
   },
   "keywords": [],
   "author": "",
@@ -41,8 +36,6 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/express-fileupload": "^1.2.0",
-    "@types/uuid": "^8.3.3",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.4"
+    "@types/uuid": "^8.3.3"
   }
 }

@@ -17,7 +17,7 @@ export class RegisterComponent {
 
   passwordState = 'weak'
 
-  passwordMatch = false;
+  passwordMatch = false
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
