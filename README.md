@@ -1,6 +1,6 @@
 # GDOX - Awesome tool to automate the generation of your documents
 
-Main Stack: MERN
+Main Stack: MEAN
 
 Frontend
 -
